@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import Hand from '../assets/images/hand.svg';
+import Logo from '../assets/images/logo-a-black.svg';
+import Play from '../assets/images/play.svg';
+import Team from '../assets/images/team.webp';
+
+import { ourteam } from '../i18n/components/ourteam';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, ourteam);
+const translatePath = useTranslatedPath(lang);
+
+---
+
+<script>  
+</script>
+
+<div class="about-us mb-20 md:mb-52">
+	<div
+		class="about-us__content max-md:mx-0 content gridded relative gap-y-8 md:gap-y-12"
+	>
+		<Image
+			id="hand"
+			class="absolute top-0 md:top-16 right-[1.875rem] md:right-[16.9rem] w-14 md:w-[4.31rem]"
+			src={Hand}
+			alt=""
+		/>
+		<h2
+			class="text-2xl/7 font-everett font-medium col-span-full md:col-span-2 md:text-right max-md:mx-[1.875rem]"
+		
+			set:html={(t('ourteam.title'))} /> 
+		<div
+			class="col-span-full md:col-span-4 relative max-md:mx-[1.875rem] overflow-hidden"
+		>
+			<Image src={Play} alt="" />
+			<div
+				class="absolute overflow-hidden -top-3 left-[4rem] md:left-[5.5rem] h-16 md:h-[5.2rem] bg-white px-1"
+			>
+				<div class="flex flex-col gap-3">
+					<img class="box1 h-10 md:h-14 relative" src={Logo.src} alt="" />
+					<img class="box1 h-10 md:h-14 relative" src={Logo.src} alt="" />
+					<img class="box1 h-10 md:h-14 relative" src={Logo.src} alt="" />
+				</div>
+			</div>
+		</div>
+		<h5
+			class="text-2xl/7 font-everett font-medium self-end col-span-full md:col-span-4 max-md:mx-[1.875rem]"
+		>
+			{(t('ourteam.subtitle'))}
+		</h5>
+		<Image class="col-span-full md:col-span-6" src={Team} alt="Amplfica Team" />
+		<div
+			class="col-span-full md:col-span-3 text-xl child-p:mb-5 max-md:mx-[1.875rem]"
+			set:html={t('ourteam.description')}) />  
+	</div>
+</div>
+
+<style>
+	.about-us__content {
+		&::before {
+			@apply absolute top-0 left-24 w-px h-[16.19rem] bg-greyish content-none md:content-[''];
+		}
+	}
+</style>

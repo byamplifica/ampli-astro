@@ -1,0 +1,28 @@
+---
+interface Props {
+	text: string;
+	href: string;
+	classes?: string;
+}
+
+const { text, href, classes } = Astro.props;
+---
+
+<script>
+	import { AnimatedLinks } from '../assets/js/animations/animatedLinks';
+	const links = document.querySelectorAll('[animated-link]');
+	AnimatedLinks(links);
+</script>
+
+<a animated-link {href} class=`relative overflow-hidden pb-2 ${classes}`
+	><span class="inline-block">{text}</span></a
+>
+
+<style>
+	a::after {
+		@apply content-[''] absolute bottom-0 left-0 w-full scale-x-0 h-px transition-transform origin-right duration-300;
+	}
+	a:hover::after {
+		@apply scale-x-100 origin-left;
+	}
+</style>

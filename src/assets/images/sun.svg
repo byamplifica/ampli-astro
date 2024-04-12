@@ -1,0 +1,51 @@
+<svg id="Grupo_42" data-name="Grupo 42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102.933" height="107.966" viewBox="0 0 102.933 107.966">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: rgba(0,0,0,0);
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        stroke: #1a1a1a;
+        stroke-miterlimit: 10;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_24" data-name="Rectángulo 24" class="cls-1" width="102.933" height="107.966"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_35" data-name="Grupo 35">
+    <g id="Grupo_34" data-name="Grupo 34" class="cls-2">
+      <line id="Línea_11" data-name="Línea 11" class="cls-3" y2="53.983" transform="translate(51.466 53.983)"/>
+    </g>
+  </g>
+  <line id="Línea_12" data-name="Línea 12" class="cls-3" x2="31.731" y2="43.673" transform="translate(51.466 53.983)"/>
+  <g id="Grupo_37" data-name="Grupo 37">
+    <g id="Grupo_36" data-name="Grupo 36" class="cls-2">
+      <line id="Línea_13" data-name="Línea 13" class="cls-3" x2="51.341" y2="16.682" transform="translate(51.466 53.983)"/>
+      <line id="Línea_14" data-name="Línea 14" class="cls-3" y1="16.682" x2="51.341" transform="translate(51.466 37.302)"/>
+    </g>
+  </g>
+  <line id="Línea_15" data-name="Línea 15" class="cls-3" y1="43.673" x2="31.731" transform="translate(51.466 10.31)"/>
+  <g id="Grupo_39" data-name="Grupo 39">
+    <g id="Grupo_38" data-name="Grupo 38" class="cls-2">
+      <line id="Línea_16" data-name="Línea 16" class="cls-3" y1="53.983" transform="translate(51.466)"/>
+    </g>
+  </g>
+  <line id="Línea_17" data-name="Línea 17" class="cls-3" x1="31.731" y1="43.673" transform="translate(19.736 10.31)"/>
+  <g id="Grupo_41" data-name="Grupo 41">
+    <g id="Grupo_40" data-name="Grupo 40" class="cls-2">
+      <line id="Línea_18" data-name="Línea 18" class="cls-3" x1="51.341" y1="16.682" transform="translate(0.125 37.302)"/>
+      <line id="Línea_19" data-name="Línea 19" class="cls-3" x1="51.341" y2="16.682" transform="translate(0.125 53.983)"/>
+    </g>
+  </g>
+  <line id="Línea_20" data-name="Línea 20" class="cls-3" x1="31.731" y2="43.673" transform="translate(19.736 53.983)"/>
+</svg>

@@ -1,0 +1,27 @@
+---
+interface Props {
+	text: string;
+	url: string;
+	classes: string;
+}
+
+const { text, url, classes } = Astro.props;
+---
+
+<a
+	href={url}
+	class=`max-md:hidden header__btn btn--rounded--white relative overflow-hidden ${classes}`
+	><span>{text}</span></a
+>
+
+<style>
+	span:not(.hover) {
+		@apply relative z-10;
+	}
+	a::after {
+		@apply content-[''] absolute top-1/2 left-1/2 w-[110%] aspect-square rounded-full bg-orangey isolate -translate-x-1/2 translate-y-1/2 transition-transform duration-500;
+	}
+	a:hover::after {
+		@apply -translate-y-1/2 isolate transition-transform duration-500;
+	}
+</style>

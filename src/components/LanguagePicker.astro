@@ -1,0 +1,80 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, useTranslatedPath, getRouteFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url); 
+const translatePath = useTranslatedPath(lang);
+
+const route = getRouteFromUrl(Astro.url);
+
+
+const languageAbbreviations = {
+  en: 'EN',
+  es: 'ES', 
+};
+
+---
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Obtener elementos del DOM para cada instancia del componente
+    const languageButtons = document.querySelectorAll('.languageButton');
+    const selectedLanguages = document.querySelectorAll('.selectedLanguage');
+    const languageOptionsList = document.querySelectorAll('.languageOptions');
+  
+    // Manejar el estado del menú desplegable para cada instancia del componente
+    languageButtons.forEach((languageButton, index) => {
+      languageButton.addEventListener('click', () => {
+        languageOptionsList[index].classList.toggle('hidden');
+      });
+    });
+  
+    // Manejar la selección de idioma para cada instancia del componente
+    languageOptionsList.forEach((languageOptions, index) => {
+      languageOptions.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON') {
+          selectedLanguages[index].textContent = event.target.textContent;
+          languageOptions.classList.add('hidden');
+        }
+      });
+    });
+  
+    // Ocultar el menú desplegable cuando se haga clic fuera de él para cada instancia del componente
+    document.addEventListener('click', (event) => {
+      languageOptionsList.forEach((languageOptions) => {
+        if (!event.target.closest('.languageButton') && !languageOptions.contains(event.target)) {
+          languageOptions.classList.add('hidden');
+        }
+      });
+    });
+  });
+  </script>
+<div id="languagePicker" class="relative inline">
+  <!-- Botón del idioma seleccionado -->
+  <button class="languageButton flex items-center space-x-1 px-3 py-2">
+    <span class="selectedLanguage uppercase">{lang}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button> 
+  <ul id="LanguageMobile" class="languageOptions hidden absolute z-10 top-full left-0 mt-1"></Fragment>
+    {Object.entries(languages).map(([langCode, label]) => ( 
+      langCode !== lang && (
+        <li>
+          <a href={translatePath(`/${route ? route : ''}`, langCode)} class="block w-full px-4 py-2 text-left">
+          {languageAbbreviations[langCode]}
+          </a>
+        </li>
+      )
+    ))}
+  </ul>
+
+</div> 
+
+<style is:global>
+  .home #languagePicker{
+		@apply text-white;
+  } 
+  .stick #languagePicker{
+		@apply sm:text-black;
+  }   
+</style>

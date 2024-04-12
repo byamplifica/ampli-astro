@@ -1,0 +1,26 @@
+<svg id="Grupo_43" data-name="Grupo 43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26.39" height="26.39" viewBox="0 0 26.39 26.39">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+        stroke: #1a1a1a;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_10" data-name="Rectángulo 10" class="cls-1" width="26.39" height="26.39"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_8" data-name="Grupo 8" class="cls-2" transform="translate(0 0)">
+    <path id="Trazado_7" data-name="Trazado 7" class="cls-3" d="M52.382.354,39.3,13.431,52.382,26.508" transform="translate(-39.069 -0.236)"/>
+    <line id="Línea_3" data-name="Línea 3" class="cls-3" x2="26.155" transform="translate(0.235 13.195)"/>
+  </g>
+</svg>

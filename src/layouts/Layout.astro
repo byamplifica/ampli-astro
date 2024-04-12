@@ -1,0 +1,172 @@
+---
+// import { ViewTransitions } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Favicon from '../assets/images/favicon.png';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+ 
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<style is:global>
+	@font-face {
+		font-family: 'TWK Everett';
+		src:
+			url('/fonts/TWKEverett-Medium-web.woff2') format('woff2'),
+			url('/fonts/TWKEverett-Medium-web.woff') format('woff');
+		font-weight: medium;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'TWK Everett';
+		src:
+			url('/fonts/TWKEverett-Bold-web.woff2') format('woff2'),
+			url('/fonts/TWKEverett-Bold-web.woff') format('woff');
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'TWK Everett';
+		src:
+			url('/fonts/TWKEverett-SuperItalic-web.woff2') format('woff2'),
+			url('/fonts/TWKEverett-SuperItalic-web.woff') format('woff');
+		font-weight: 900;
+		font-style: italic;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Inter';
+		src:
+			url('/fonts/Inter-Regular.woff2') format('woff2'),
+			url('/fonts/Inter-Regular.woff') format('woff');
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: 'Inter';
+		src:
+			url('/fonts/Inter-Medium.woff2') format('woff2'),
+			url('/fonts/Inter-Medium.woff') format('woff');
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	/* fallback 
+Only in Pages use Material Fonts
+*/
+
+	@font-face {
+		font-family: 'Material Symbols Outlined';
+		font-style: normal;
+		font-weight: 300;
+		src: url('/fonts/material-icons.woff2') format('woff2');
+	}
+
+	.material-symbols-outlined {
+		font-family: 'Material Symbols Outlined';
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		line-height: 1;
+		letter-spacing: normal;
+		text-transform: none;
+		display: inline-block;
+		white-space: nowrap;
+		word-wrap: normal;
+		direction: ltr;
+		-webkit-font-feature-settings: 'liga';
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/**
+* Base styles
+*/
+
+	:root {
+		font-size: calc(10 * (100vw / 1200));
+	}
+
+	@media screen and (max-width: 768px) {
+		:root {
+			font-size: calc(10 * (100vw / 270));
+		}
+	}
+
+	body {
+		@apply font-inter bg-white overflow-x-hidden;
+	}
+
+	/**
+* Useful utilities
+*/
+
+	.content {
+		@apply mx-8 md:mx-[9.56rem];
+	}
+
+	.gridded {
+		@apply grid grid-cols-4 md:grid-cols-12 gap-x-[1.38rem] md:gap-x-[2.38rem];
+	}
+
+	.btn--rounded--white {
+		@apply bg-white rounded-3xl py-[0.625rem] px-6 text-black;
+	}
+
+	.btn--rounded--black {
+		@apply bg-foreground border border-foreground rounded-[2rem] py-4 px-12 text-white hover:border-orangey hover:text-white transition-colors duration-500;
+	}
+
+	.btn--rounded--transparent {
+		@apply bg-transparent border border-foreground rounded-[2rem] py-4 px-12 text-foreground hover:border-orangey hover:text-white transition-colors duration-500;
+	}
+
+	.animated-link a {
+		@apply relative overflow-hidden pb-2;
+	}
+
+	.animated-link a::after {
+		@apply content-[''] absolute bottom-0 left-0 w-full scale-x-0 h-px transition-transform origin-right duration-300;
+	}
+
+	.animated-link a:hover {
+	}
+
+	.animated-link a:hover::after {
+		@apply scale-x-100 origin-left;
+	}
+</style>
+
+<script> 
+</script>
+
+<html lang={lang}>
+	<head>
+        <meta charset="utf-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />   
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<title>{title}</title>
+		<!-- <ViewTransitions /> -->
+	</head>
+	<Header page={currentPath == '' || currentPath=="es/" ? 'home' : currentPath} />
+	<body>
+		<slot />
+	</body>
+	<Footer />
+</html>

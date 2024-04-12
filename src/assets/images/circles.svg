@@ -1,0 +1,25 @@
+<svg id="Grupo_75" data-name="Grupo 75" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="474.885" height="710.036" viewBox="0 0 474.885 710.036">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+        stroke: #b2b2b2;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        stroke-miterlimit: 10;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_63" data-name="Rectángulo 63" class="cls-1" width="474.885" height="710.036"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_74" data-name="Grupo 74" class="cls-2">
+    <circle id="Elipse_12" data-name="Elipse 12" class="cls-3" cx="235.151" cy="235.151" r="235.151" transform="translate(2.291 2.291)"/>
+    <circle id="Elipse_13" data-name="Elipse 13" class="cls-3" cx="235.151" cy="235.151" r="235.151" transform="translate(2.291 237.442)"/>
+  </g>
+</svg>

@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import Arrow from '../assets/images/arrow-r.svg';
+import Circles from '../assets/images/circles.svg'; 
+import { contactus } from '../i18n/components/contactus';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, contactus);
+const translatePath = useTranslatedPath(lang);
+---
+
+<div
+	class="contact-cta border-b border-white bg-foreground relative overflow-hidden"
+>
+	<Image
+		class="max-md:hidden absolute top-1/2 -translate-y-1/2 -right-8 w-[27.4rem]"
+		src={Circles}
+		alt=""
+	/>
+	<div class="content gridded gap-y-5 text-white py-56 md:py-48">
+		<div class="contact-cta__slogan col-span-full md:col-span-7 relative">
+			<p set:html={t('contactus.title')}) /> 
+		</div>
+		<div
+			class="col-span-full md:col-span-2 md:row-start-2 flex items-center gap-x-6 animated-link"
+		>
+			<Image class="w-16" src={Arrow} alt="" />
+			<a
+				class="font-everett font-medium text-2xl/7 after:bg-white"
+				href={translatePath('/contact')}>{t('contactus.link')}
+			</a>
+		</div>
+	</div>
+</div>
+
+<style>
+	.contact-cta {
+		.contact-cta__slogan {
+			@apply text-[2.7rem]/none md:text-[6.25rem]/none font-everett;
+			strong {
+				@apply font-bold;
+				i {
+					@apply font-black italic;
+				}
+			}
+			span {
+				@apply leading-normal;
+			}
+			p:last-child {
+				@apply mt-6;
+			}
+		}
+	}
+</style>

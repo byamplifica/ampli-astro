@@ -1,0 +1,228 @@
+---
+import { Image } from 'astro:assets';
+import ArrowSlider from '../assets/images/arrow-slider.svg';
+import VerticalsMedia from '../assets/images/verticals_media.webp';
+import VerticalsSocial from '../assets/images/verticals_social.webp';
+import VerticalsSports from '../assets/images/verticals_sports.webp';
+import VerticalsTech from '../assets/images/verticals_tech.webp';
+import VerticalsWine from '../assets/images/verticals_wine.webp';
+
+import { verticals } from '../i18n/components/verticals';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, verticals); 
+---
+
+<script> 
+	const mediaQuery = window.matchMedia('(min-width: 768px)');
+	const swiperContainer = document.querySelector('.swiper-container');
+
+	if (mediaQuery.matches) {
+		handleDesktopSlider(swiperContainer);
+	} else {
+		handleMobileSlider(swiperContainer);
+	}
+
+	var target = document.getElementById('customCursor');
+	if (target != null) {
+		document.addEventListener('mousemove', function (event) {
+			trackMouseMove(target);
+		});
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		var slider = document.getElementById('verticalsSlider');
+		var target = document.getElementById('customCursor');
+		if (slider != null && target != null) {
+			slider.addEventListener('mouseenter', function () {
+				target.classList.add('active');
+			});
+
+			slider.addEventListener('mouseleave', function () {
+				target.classList.remove('active');
+			});
+		}
+	});
+</script>
+
+<div id="verticals" class="verticals overflow-hidden mb-44">
+	<div id="customCursor">
+		<svg
+			id="Grupo_43"
+			data-name="Grupo 43"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			width="79.316"
+			height="79.315"
+			viewBox="0 0 79.316 79.315"
+		>
+			<defs>
+				<style>
+					.cls-1,
+					.cls-3 {
+						fill: none;
+					}
+
+					.cls-2 {
+						clip-path: url(#clip-path);
+					}
+
+					#customCursor .cls-3 {
+						stroke: #1a1a1a;
+						stroke-miterlimit: 10;
+					}
+				</style>
+				<clipPath id="clip-path">
+					<rect
+						id="Rectángulo_10"
+						data-name="Rectángulo 10"
+						class="cls-1"
+						width="79.316"
+						height="79.315"
+						transform="translate(0 0)"></rect>
+				</clipPath>
+			</defs>
+			<g id="Grupo_8" data-name="Grupo 8" class="cls-2">
+				<path
+					id="Trazado_7"
+					data-name="Trazado 7"
+					class="cls-3"
+					d="M39.3.354l39.3,39.3-39.3,39.3"></path>
+				<line
+					id="Línea_3"
+					data-name="Línea 3"
+					class="cls-3"
+					x1="78.609"
+					y1="0.001"
+					transform="translate(0 39.657)"></line>
+			</g>
+		</svg>
+	</div>
+	<h2
+		class="text-[4.62rem]/none md:text-[10.75rem]/none font-everett font-medium uppercase"
+	>
+	{(t('verticals.title'))}
+	</h2>
+	<div
+		class="md:grid grid-cols-[33.5rem_1fr] relative md:-mt-8 gap-x-[2.38rem]"
+	>
+		<div class="mt-7 md:mt-20 text-xl content md:w-[23rem]">
+			{(t('verticals.description'))}
+		</div>
+		<div
+			id="verticalsSlider"
+			class="verticals__slider overflow-hidden max-md:px-[1.875rem] md:pr-[35.88rem] max-md:mt-8"
+		>
+			<div class="swiper-container overflow-visible">
+				<div
+					class="swiper-info grid grid-cols-[max-content_max-content] justify-between items-center md:hidden"
+				>
+					<div class="swiper-pagination"></div>
+					<div class="swiper-navigation">
+						<div class="swiper-button-prev">
+							<Image src={ArrowSlider} alt="" />
+						</div>
+						<div class="swiper-button-next">
+							<Image class="rotate-180" src={ArrowSlider} alt="" />
+						</div>
+					</div>
+				</div>
+				<div class="swiper-wrapper">
+					<div
+						class="swiper-slide relative"
+						data-title={t('verticals.sports')}
+						data-subtitle={t('verticals.sports.description')}
+						data-style="bold"
+					>
+						<Image src={VerticalsSports} alt={t('verticals.sports')} />
+					</div>
+					<div
+						class="swiper-slide relative"
+						data-title={t('verticals.media')}
+						data-subtitle={t('verticals.media.description')}
+						data-style="bold"
+					>
+						<Image src={VerticalsMedia} alt={t('verticals.media')} />
+					</div>
+					<div
+						class="swiper-slide relative"
+						data-title={t('verticals.social')}
+						data-subtitle={t('verticals.social.description')}
+						data-style="bold"
+					>
+						<Image src={VerticalsSocial} alt={t('verticals.social')} />
+					</div>
+					<div
+						class="swiper-slide relative"
+						data-title={t('verticals.wine')}
+						data-subtitle={t('verticals.wine.description')}
+						data-style="bold"
+					>
+						<Image src={VerticalsWine} alt={t('verticals.wine')} />
+					</div>
+					<div
+						class="swiper-slide relative"
+						data-title={t('verticals.tech')}
+						data-subtitle={t('verticals.tech.description')}
+						data-style="bold"
+					>
+						<Image src={VerticalsTech} alt={t('verticals.tech')} />
+					</div>
+				</div>
+				<div class="slide-captions"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.verticals {
+		#customCursor {
+			@apply max-md:!hidden absolute w-32 h-32 rounded-full bg-white z-[99999999] rotate-90 opacity-0 transition-[transform,_opacity] duration-300 pointer-events-none;
+			svg {
+				@apply w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+			}
+			&.active {
+				@apply rotate-0 opacity-100 transition-[transform,_opacity] duration-300;
+			}
+		}
+		#verticalsSlider {
+			@apply md:cursor-none;
+			.swiper-slide {
+				h3,
+				p {
+					@apply hidden;
+				}
+				&.swiper-slide-active h3,
+				&.swiper-slide-active p {
+					@apply block;
+				}
+			}
+			& :global(.slide__title--italic) {
+				@apply text-3xl/none md:text-6xl/none mt-5 font-everett font-black italic;
+			}
+			& :global(.slide__title--bold) {
+				@apply text-3xl/none md:text-6xl/none mt-5 font-everett font-bold;
+			}
+			& :global(.slide__title--medium) {
+				@apply text-3xl/none md:text-6xl/none mt-5 font-everett font-medium;
+			}
+			& :global(.slide__subtitle) {
+				@apply text-xl mt-3 md:mt-5;
+			}
+			.swiper-info {
+				@apply h-28;
+			}
+			.swiper-navigation {
+				@apply flex gap-x-8 h-[3.75rem];
+				div {
+					@apply static w-[3.75rem] !m-0 h-[3.75rem] rounded-full border border-foreground flex items-center justify-center after:content-none;
+				}
+			}
+			.swiper-pagination {
+				@apply static text-2xl font-medium;
+			}
+		}
+	}
+</style>

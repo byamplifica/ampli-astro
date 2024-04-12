@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="61" viewBox="0 0 65 61">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-1 {
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_10" data-name="Rectángulo 10" class="cls-1" width="65" height="61" transform="translate(0 0.338)"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_71" data-name="Grupo 71" transform="translate(0 -0.671)">
+    <g id="Grupo_8" data-name="Grupo 8" class="cls-2" transform="translate(0 0.334)">
+      <path id="Trazado_7" data-name="Trazado 7" class="cls-3" d="M39.3.354,69.872,30.921,39.3,61.488" transform="translate(-8.737 -0.375)"/>
+      <line id="Línea_3" data-name="Línea 3" class="cls-3" x1="61.136" y1="0.001" transform="translate(0 30.545)"/>
+    </g>
+  </g>
+</svg>

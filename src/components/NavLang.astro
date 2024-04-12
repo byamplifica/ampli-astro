@@ -1,0 +1,20 @@
+---
+import LanguagePicker from '../components/LanguagePicker.astro';
+import AnimatedButton from './AnimatedButton.astro';
+ 
+import { ui } from '../i18n/ui';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, ui);
+const translatePath = useTranslatedPath(lang);
+
+---  
+<AnimatedButton
+	text={t('nav.contact')} 
+	url={translatePath('/contact')}
+	classes="justify-self-end max-md:hidden font-everett font-medium text-2xl/7 !text-white !bg-foreground"
+/> 
+<div class="hidden sm:block">
+	<LanguagePicker />  
+</div>

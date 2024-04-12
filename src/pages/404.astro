@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Figui from '../assets/images/figui.jpg';
+---
+
+<Layout title="Page not found -- Amplifica">
+	<main>
+		<div
+			id="primary"
+			class="my-24 md:my-[11.5rem] md:ml-[9.56rem] grid md:grid-cols-[48.25rem_1fr] gap-5 md:gap-x-[2.38rem]"
+		>
+			<div class="max-md:mx-8 font-everett">
+				<h1
+					class="text-6xl/none md:text-[7.5rem]/normal font-black italic max-md:mb-8"
+				>
+					404
+				</h1>
+				<h2 class="text-3xl/tight md:text-6xl/tight font-medium mb-6">
+					This page seems to have been eaten by Figacita, our Chief Dog Officer.
+				</h2>
+				<p class="text-2xl font-medium mb-10 md:mb-[3.75rem]">
+					She’s a good girl, so let's keep this a secret, shall we?
+				</p>
+				<div class="flex max-md:flex-col gap-y-8 items-center gap-x-10">
+					<a
+						class="btn--rounded--black btn--animated text-2xl/7 px-11 py-4"
+						href="/"><span>Go to our homepage</span></a
+					>
+					<a
+						class="btn--rounded--transparent btn--animated text-2xl/7 px-11 py-4"
+						href="/contact"><span>Send us a message</span></a
+					>
+				</div>
+			</div>
+			<Image
+				class="w-full max-md:row-start-1 text-right"
+				src={Figui}
+				width="500"
+				alt="Figacita"
+			/>
+		</div>
+	</main>
+</Layout>

@@ -1,0 +1,30 @@
+export const verticals = {
+    en: {
+      'verticals.title': 'Verticals',
+      'verticals.description': 'While we engage with clients spanning a diverse array of industry sectors, we deliver outstanding expertise and value in a handful of core areas.',
+      'verticals.sports': 'Sports',
+      'verticals.sports.description': 'We work with leading sports organizations and brands to help them connect with global fans in their own language.', 
+      'verticals.media': 'Media & Entertainment',
+      'verticals.media.description': 'We dive into what resonates with diverse communities to grow audiences for the digital media, arts, entertainment and news industries.',
+      'verticals.social': 'Social Impact',
+      'verticals.social.description': 'We build and support purposeful initiatives, using technology to tackle complex problems and inspire action.',
+      'verticals.wine': 'Wine',
+      'verticals.wine.description': 'We create strategies, content assets, and marketing channels that align with the wine industry\'s core values of sensitivity and excellence.',
+      'verticals.tech': 'Technology',
+      'verticals.tech.description': 'We craft campaigns and strategies to help startups, scale-ups, and large companies in their journey to finding their unique voice, gaining traction, and achieving success.',
+  },
+    es: {
+      'verticals.title': 'Verticales',
+      'verticals.description': 'While we engage with clients spanning a diverse array of industry sectors, we deliver outstanding expertise and value in a handful of core areas.',
+      'verticals.sports': 'Deportes',
+      'verticals.sports.description': 'We work with leading sports organizations and brands to help them connect with global fans in their own language.', 
+      'verticals.media': 'Medios y Entretenimiento',
+      'verticals.media.description': 'We dive into what resonates with diverse communities to grow audiences for the digital media, arts, entertainment and news industries.',
+      'verticals.social': 'Impacto Social',
+      'verticals.social.description': 'We build and support purposeful initiatives, using technology to tackle complex problems and inspire action.',
+      'verticals.wine': 'Vino',
+      'verticals.wine.description': 'We create strategies, content assets, and marketing channels that align with the wine industry\'s core values of sensitivity and excellence.',
+      'verticals.tech': 'Tecnología',
+      'verticals.tech.description': 'We craft campaigns and strategies to help startups, scale-ups, and large companies in their journey to finding their unique voice, gaining traction, and achieving success.',
+    }
+} as const;

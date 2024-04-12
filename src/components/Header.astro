@@ -1,0 +1,204 @@
+---
+import { Image } from 'astro:assets';
+import NavMenu from './NavMenu.astro';
+import NavLang from './NavLang.astro';
+import Isotype from '../assets/images/logo-a.svg';
+import LogoInverted from '../assets/images/Amplifica_Logotipo_Inverted.svg';
+import { ui } from '../i18n/ui';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, ui);
+const translatePath = useTranslatedPath(lang);
+
+interface Props {
+	page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<script>
+	const mediaQuery = window.matchMedia('(min-width: 768px)'); 
+	/**
+	 * Handle menu opening and closing together with color change
+	 */
+	if (!mediaQuery.matches) {
+		let filterIndicator = 1;
+
+		const menuToggle = document.querySelector('#menuToggle');
+		menuToggle.addEventListener('click', (event) => {
+			if (!menuToggle.classList.contains('active')) {
+				document.querySelector('.header__nav').classList.toggle('active');
+				menuToggle.classList.add('active');
+				filterIndicator = 1;
+
+				Headertl.play();
+			} else {
+				menuToggle.classList.remove('active');
+				filterIndicator = 0;
+				Headertl.reverse();
+			}
+		});
+
+		let menuitems = document.querySelectorAll('header li');
+
+		menuitems.forEach((a) => {
+			a.addEventListener('click', (e) => {
+				Headertl.reverse();
+				menuToggle.classList.remove('active');
+			});
+		});
+	}
+
+	/**
+	 * Sticky behaveiour
+	 */
+	window.onscroll = function () {
+		handleStickyNavbar();
+	};
+
+	/**
+	 ** Logo letter
+	 */
+	const vLoop = document.querySelectorAll('#logo .box1');
+	if (vLoop.length > 0) {
+		handleLogoAnimation(vLoop);
+	}
+</script>
+
+<header
+	class=`header text-foreground fixed top-0 left-0 w-full z-40 transition-colors duration-300 ${page}`
+>
+	<div
+		class="content py-8 grid grid-cols-[9.75rem_max-content] md:grid-cols-[11.6rem_1fr_max-content_max-content] items-center max-md:justify-between"
+	>
+		<div id="logo" class="relative w-full overflow-hidden z-50">
+			<a class="w-full block" href={translatePath('/')} aria-label="Amplifica">
+				<Image id="staticLogo" src={LogoInverted} alt="" />
+				<div
+					class="h-[1.9rem] md:h-[2.3rem] overflow-hidden absolute right-0 -top-1"
+				>
+					<div class="flex flex-col gap-[0.3rem]">
+						<img
+							class="box1 h-[1.3rem] md:h-6 relative invert-0"
+							src={Isotype.src}
+							alt=""
+						/>
+						<img
+							class="box1 h-[1.3rem] md:h-6 relative invert-0"
+							src={Isotype.src}
+							alt=""
+						/>
+						<img
+							class="box1 h-[1.3rem] md:h-6 relative invert-0"
+							src={Isotype.src}
+							alt=""
+						/>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<NavMenu page={page} />
+		
+		<NavLang />
+
+		<div
+			id="menuToggle"
+			class="relative cursor-pointer md:hidden text-lg font-everett font-medium p-2 z-50"
+		>
+			<div class="relative overflow-hidden">
+				<span class="inline-block relative">Menu</span>
+				<span
+					class="inline-block absolute left-1/2 -translate-x-1/2 bottom-full"
+					>{t('nav.close')} </span
+				>
+			</div>
+		</div>
+	</div>
+</header>
+
+<style>
+	#staticLogo {
+		clip-path: polygon(0 0, 87% 0, 87% 100%, 0% 100%);
+		@apply invert-0;
+	}
+	.header {
+		#menuToggle {
+			span {
+				@apply text-foreground transition-all duration-300;
+			}
+			&.active {
+				span {
+					@apply text-white translate-y-full transition-all duration-300;
+				}
+			}
+		}
+		&.stick {
+			@apply bg-white;
+			ul li a {
+				@apply md:text-black;
+			}
+			#staticLogo {
+				@apply invert-0;
+			}
+			#logo {
+				.box1 {
+					@apply invert-0;
+				}
+			}
+			#menuToggle {
+				span {
+					@apply text-foreground transition-all duration-300;
+				}
+				&.active span {
+					@apply text-white transition-all duration-300;
+				}
+			}
+		}
+		&.home {
+			ul {
+				li {
+					a {
+						@apply text-white;
+					}
+				}
+			}
+			#menuToggle {
+				span {
+					@apply text-white;
+				}
+			}
+			#staticLogo {
+				@apply invert;
+			}
+			#logo {
+				.box1 {
+					@apply invert;
+				}
+			}
+			&.stick {
+				ul li a {
+					@apply md:text-black;
+				}
+				#menuToggle {
+					span {
+						@apply text-foreground transition-colors duration-300;
+					}
+					&.active span {
+						@apply text-white transition-all duration-300;
+					}
+				}
+				#staticLogo {
+					@apply invert-0;
+				}
+				#logo {
+					.box1 {
+						@apply invert-0;
+					}
+				}
+			}
+		}
+	}
+</style>

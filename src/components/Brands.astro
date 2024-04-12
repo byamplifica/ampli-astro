@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import Globe from '../assets/images/globe.svg';
+import Antel from '../assets/images/antel.webp';
+import Chelsea from '../assets/images/chelsea.webp';
+import ElTrece from '../assets/images/eltrece.webp';
+import LN from '../assets/images/ln.webp';
+import Meta from '../assets/images/meta.webp';
+import NBA from '../assets/images/nba.webp';
+import Nivea from '../assets/images/nivea.webp';
+import Telefonica from '../assets/images/telefonica.webp';
+import PL from '../assets/images/pl.webp';
+import Fifa from '../assets/images/fifa.webp';
+import GELP from '../assets/images/gelp.webp';
+
+import { brands } from '../i18n/components/brands';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang, brands); 
+---
+<script>
+// JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+    const logosContainer = document.querySelector('.brands__logos');
+    const logos = Array.from(logosContainer.querySelectorAll('.brand-logo'));
+
+    // Mostrar inicialmente 8 logotipos aleatorios
+    showInitialLogos();
+
+    // Rotar los logotipos cada 3 segundos
+    setInterval(rotateLogos, 2000);
+
+    function showInitialLogos() {
+        for (let i = 0; i < 8; i++) {
+            const randomIndex = Math.floor(Math.random() * logos.length);
+            const logo = logos[randomIndex];
+            logo.classList.remove('hidden');
+            logos.splice(randomIndex, 1); // Eliminar el logo mostrado para que no se repita
+        }
+    }
+	function rotateLogos() {
+		const visibleLogos = Array.from(logosContainer.querySelectorAll('.brand-logo:not(.hidden)'));
+		const hiddenLogos = logos.filter(logo => logo.classList.contains('hidden'));
+
+		// Verificar si hay menos de 8 logotipos visibles al iniciar
+		if (visibleLogos.length < 8) {
+			// Mostrar aleatoriamente logotipos ocultos hasta completar 8 visibles
+			while (visibleLogos.length < 8 && hiddenLogos.length > 0) {
+				const randomIndexToShow = Math.floor(Math.random() * hiddenLogos.length);
+				const logoToShow = hiddenLogos[randomIndexToShow];
+				logoToShow.classList.remove('hidden');
+				hiddenLogos.splice(randomIndexToShow, 1); // Eliminar el logotipo mostrado de la lista de ocultos
+			}
+		}
+
+		// Continuar con la rotación
+		const randomIndexToHide = Math.floor(Math.random() * visibleLogos.length);
+		const logoToHide = visibleLogos[randomIndexToHide];
+
+		// Seleccionar un logotipo oculto aleatorio solo si hay logotipos ocultos disponibles
+		console.log(hiddenLogos.length)
+		if (hiddenLogos.length > 0) {
+			const randomIndexToShow = Math.floor(Math.random() * hiddenLogos.length);
+			const logoToShow = hiddenLogos[randomIndexToShow];
+
+			// Ocultar el logotipo seleccionado y mostrar el oculto
+			logoToHide.classList.add('animate-fade-out');
+			setTimeout(() => {
+				logoToHide.classList.add('hidden');
+				logoToHide.classList.remove('animate-fade-out');
+				logoToShow.classList.remove('hidden');
+				logoToShow.classList.add('animate-fade-in');
+				setTimeout(() => {
+					logoToShow.classList.remove('animate-fade-in');
+				}, 1000); // Duración de la animación fade-in
+			}, 1000); // Duración de la animación fade-out
+		}
+	}
+
+
+
+
+
+});
+
+</script>
+<div id="brands" class="brands">
+	<div
+		class="content gridded relative mb-[7.5rem] md:mb-[11.6rem] gap-y-[3.12rem] md:gap-y-32"
+	>
+		<Image
+			class="max-md:hidden absolute right-0 top-0 w-40"
+			src={Globe}
+			alt=""
+		/>
+		<div class="col-span-full md:col-span-8 md:col-start-3">
+			<div class="brands__title text-[1.875rem]/[1.4] md:text-6xl/[1.2] font-everett font-medium mb-10 md:mb-[3.12rem]">
+				{(t('brands.title'))}
+			</div>
+			<div class="brands__excerpt text-xl/[1.6rem] heir-p:mb-5 last:heir-p:mb-0" set:html={t('brands.description')}) /> 
+		</div>
+		<div class="col-span-full md:col-span-2 md:row-start-2 font-everett font-medium text-2xl/7">
+			{(t('brands.portfolio'))}
+		</div>
+		<div
+			class="brands__logos col-span-full md:col-span-8 md:col-start-3 grid grid-cols-2 md:grid-cols-4 gap-x-10 md:gap-x-[2.38rem] gap-y-11 md:gap-y-20 items-center justify-items-center md:ml-4"
+			>
+			<Image src={NBA} alt="National Basketball Association" class="brand-logo hidden" width="100" />
+			<Image src={Meta} alt="Meta" class="brand-logo hidden" />
+			<Image src={Chelsea} alt="Chelsea" class="brand-logo hidden" />
+			<Image src={LN} alt="La Nación +" class="brand-logo hidden" />
+			<Image src={Nivea} alt="Nivea" class="brand-logo hidden" />
+			<Image src={Telefonica} alt="Telefonica" class="brand-logo hidden" width="170" />
+			<Image src={ElTrece} alt="El Trece" class="brand-logo hidden" />
+			<Image src={Antel} alt="Antel" class="brand-logo hidden" /> 
+			<Image src={PL} alt="Premier League" class="brand-logo hidden" width="150" /> 
+			<Image src={Fifa} alt="FIFA" class="brand-logo hidden" width="130" /> 
+			<Image src={GELP} alt="Gimnasia y Esgrima de la plata" class="brand-logo hidden" width="80" /> 
+			
+		</div>
+	</div>
+</div>
+<style>
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.5s ease-in-out;
+}
+
+.animate-fade-out {
+    animation: fade-out 0.5s ease-in-out;
+}
+
+
+</style>
